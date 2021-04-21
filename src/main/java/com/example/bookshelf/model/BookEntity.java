@@ -18,6 +18,8 @@ public class BookEntity {
     private String author;
     @Column(nullable = false)
     private int year;
+    @Column(length = 13)
+    private String isbn;
 
     public Long getId() {
         return id;
@@ -57,5 +59,13 @@ public class BookEntity {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }
