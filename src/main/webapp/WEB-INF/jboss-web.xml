@@ -1,0 +1,3 @@
+<jboss-web>
+    <context-root>/bookshelf</context-root>
+</jboss-web>
