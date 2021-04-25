@@ -35,4 +35,8 @@ public class BookControl {
         em.merge(book);
     }
 
+    public void create(BookEntity book) {
+        em.persist(book);
+    }
+
 }

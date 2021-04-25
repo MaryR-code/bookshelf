@@ -14,23 +14,32 @@ import java.io.Serializable;
 public class BookView implements Serializable {
     @Inject
     private BookControl control;
-    private long bookId;
+    private Long bookId;
     private BookEntity book;
 
     public void open() {
-        book = control.find(bookId);
+        if (bookId == null) {
+            book = new BookEntity();
+        } else {
+            book = control.find(bookId);
+        }
     }
 
     public String save() {
-        control.update(book);
+        if (bookId == null) {
+            control.create(book);
+            bookId = book.getId();
+        } else {
+            control.update(book);
+        }
         return "/book?faces-redirect=true&includeViewParams=true";
     }
 
-    public long getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(long bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
