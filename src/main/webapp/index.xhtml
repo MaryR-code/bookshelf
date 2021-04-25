@@ -8,17 +8,19 @@
     <title>Bookshelf</title>
 </h:head>
 <h:body>
-<!--    <h:outputLabel value="#{searchBookBean.books.size()}"/>-->
+<!--    <h:outputLabel value="#{searchBookView.books.size()}"/>-->
     <h:form>
         <div class="card">
 
-            <p:inputText value="#{searchBookBean.term}">
-                <p:ajax update="booksTable" event="keyup" delay="500" listener="#{searchBookBean.search}"/>
+            <p:inputText value="#{searchBookView.term}">
+                <p:ajax update="booksTable" event="keyup" delay="500" listener="#{searchBookView.search}"/>
             </p:inputText>
 
-            <p:dataTable id="booksTable" var="book" value="#{searchBookBean.books}">
+            <p:dataTable id="booksTable" var="book" value="#{searchBookView.books}">
                 <p:column headerText="ID">
-                    <h:outputText value="#{book.id}" />
+                    <p:link value="#{book.id}" outcome="/book">
+                        <f:param name="bookId" value="#{book.id}"/>
+                    </p:link>
                 </p:column>
 
                 <p:column headerText="Title">
@@ -36,8 +38,15 @@
                 <p:column headerText="ISBN">
                     <h:outputText value="#{book.isbn}"/>
                 </p:column>
+
+                <p:column>
+                    <p:button value="View" outcome="/book">
+                        <f:param name="bookId" value="#{book.id}"/>
+                    </p:button>
+                </p:column>
             </p:dataTable>
         </div>
     </h:form>
+    <p:link outcome="/admin/book-edit" value="Add new book"/>
 </h:body>
 </html>
