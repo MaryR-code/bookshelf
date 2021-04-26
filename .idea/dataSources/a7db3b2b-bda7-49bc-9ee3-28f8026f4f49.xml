@@ -179,39 +179,72 @@
     <sequence id="164" parent="4" name="HIBERNATE_SEQUENCE">
       <ObjectId>4</ObjectId>
     </sequence>
-    <table id="165" parent="4" name="BOOKENTITY">
+    <table id="165" parent="4" name="AUTHORENTITY">
       <ObjectId>5</ObjectId>
     </table>
-    <column id="166" parent="165" name="ID">
+    <table id="166" parent="4" name="BOOKENTITY">
+      <ObjectId>8</ObjectId>
+    </table>
+    <column id="167" parent="165" name="ID">
       <Position>1</Position>
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="167" parent="165" name="AUTHOR">
+    <column id="168" parent="165" name="BIO">
       <Position>2</Position>
-      <DataType>VARCHAR(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="168" parent="165" name="DESCRIPTION">
-      <Position>3</Position>
       <DataType>VARCHAR(2000)|0s</DataType>
     </column>
-    <column id="169" parent="165" name="ISBN">
-      <Position>4</Position>
-      <DataType>VARCHAR(11)|0s</DataType>
+    <column id="169" parent="165" name="BORN">
+      <Position>3</Position>
+      <DataType>TIMESTAMP|0s</DataType>
     </column>
-    <column id="170" parent="165" name="TITLE">
+    <column id="170" parent="165" name="DIED">
+      <Position>4</Position>
+      <DataType>TIMESTAMP|0s</DataType>
+    </column>
+    <column id="171" parent="165" name="NAME">
       <Position>5</Position>
       <DataType>VARCHAR(150)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="171" parent="165" name="YEAR">
+    <index id="172" parent="165" name="PRIMARY_KEY_B">
+      <ObjectId>6</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SourceTextLength>66</SourceTextLength>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+      <AutoCreated>1</AutoCreated>
+    </index>
+    <column id="173" parent="166" name="ID">
+      <Position>1</Position>
+      <DataType>BIGINT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="174" parent="166" name="AUTHOR">
+      <Position>2</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="175" parent="166" name="DESCRIPTION">
+      <Position>3</Position>
+      <DataType>VARCHAR(2000)|0s</DataType>
+    </column>
+    <column id="176" parent="166" name="ISBN">
+      <Position>4</Position>
+      <DataType>VARCHAR(13)|0s</DataType>
+    </column>
+    <column id="177" parent="166" name="TITLE">
+      <Position>5</Position>
+      <DataType>VARCHAR(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="178" parent="166" name="YEAR">
       <Position>6</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="172" parent="165" name="PRIMARY_KEY_C">
-      <ObjectId>6</ObjectId>
+    <index id="179" parent="166" name="PRIMARY_KEY_C">
+      <ObjectId>9</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>64</SourceTextLength>
       <ColNames>ID</ColNames>

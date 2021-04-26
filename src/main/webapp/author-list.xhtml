@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Author List</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <div class="card">
+
+            <p:inputText value="#{searchAuthorView.term}" style="margin-bottom: .5rem">
+                <p:ajax update="authorsTable" event="keyup" delay="500" listener="#{searchAuthorView.search}"/>
+            </p:inputText>
+
+            <p:dataTable id="authorsTable" var="author" value="#{searchAuthorView.authors}">
+                <p:column headerText="ID">
+                    <p:link value="#{author.id}" outcome="/author">
+                        <f:param name="authorId" value="#{author.id}"/>
+                    </p:link>
+                </p:column>
+
+                <p:column headerText="Name">
+                    <h:outputText value="#{author.name}" />
+                </p:column>
+
+                <p:column headerText="Born">
+                    <h:outputText value="#{author.born}">
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Died">
+                    <h:outputText value="#{author.died}">
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column>
+                    <p:button value="View" outcome="/author">
+                        <f:param name="authorId" value="#{author.id}"/>
+                    </p:button>
+                </p:column>
+            </p:dataTable>
+        </div>
+    </h:form>
+
+    <div class="card" style="margin-top: .5rem">
+        <p:button outcome="/admin/author-edit" value="Add new author" />
+    </div>
+</h:body>
+</html>

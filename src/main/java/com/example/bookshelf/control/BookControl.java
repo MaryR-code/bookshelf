@@ -27,7 +27,7 @@ public class BookControl {
         }
     }
 
-    public BookEntity find(long bookId) {
+    public BookEntity find(Long bookId) {
         return em.find(BookEntity.class, bookId);   // найти по ID
     }
 
@@ -38,5 +38,4 @@ public class BookControl {
     public void create(BookEntity book) {
         em.persist(book);
     }
-
 }

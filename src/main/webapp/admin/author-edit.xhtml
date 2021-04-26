@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <f:metadata>
+        <f:viewParam name="authorId" value="#{authorView.authorId}"/>
+        <f:viewAction action="#{authorView.open}"/>
+    </f:metadata>
+    <title>Edit Author</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p>
+            <p:outputLabel for="authorName" value="Name"/>
+            <p:inputText id="authorName" value="#{authorView.author.name}"/>
+        </p>
+        <p>
+            <p:outputLabel for="authorBorn" value="Born"/>
+            <p:datePicker id="authorBorn" value="#{authorView.author.born}"/>
+        </p>
+        <p>
+            <p:outputLabel for="authorDied" value="Died"/>
+            <p:datePicker id="authorDied" value="#{authorView.author.died}"/>
+        </p>
+        <p>
+            <p:outputLabel for="authorBio" value="Biography"/>
+            <p:inputTextarea id="authorBio" value="#{authorView.author.bio}"/>
+        </p>
+        <p>
+            <p:commandButton action="#{authorView.save}" value="Save" />
+        </p>
+    </h:form>
+</h:body>
+</html>
