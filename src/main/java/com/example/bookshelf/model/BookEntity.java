@@ -1,23 +1,33 @@
 package com.example.bookshelf.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class BookEntity {
     @Id
     @GeneratedValue
     private Long id;
+
     @Column(length = 150, nullable = false)
+    @NotBlank
     private String title;
+
     @Column(length = 2000)
     private String description;
-    @Column(length = 200, nullable = false)
-    private String author;
+
+//    @Column(length = 200, nullable = false)
+//    private String author;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "author_id", nullable = false)
+    @NotNull(message = "Please select author")
+    private AuthorEntity author;
+
     @Column(nullable = false)
     private int year;
+
     @Column(length = 13)
     private String isbn;
 
@@ -45,11 +55,19 @@ public class BookEntity {
         this.description = description;
     }
 
-    public String getAuthor() {
+//    public String getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(String author) {
+//        this.author = author;
+//    }
+
+    public AuthorEntity getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(AuthorEntity author) {
         this.author = author;
     }
 

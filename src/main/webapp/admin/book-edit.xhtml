@@ -14,24 +14,32 @@
 
 <h:body>
     <h:form>
-        <p>
+        <h:panelGrid columns="3">
+
             <p:outputLabel for="bookTitle" value="Title"/>
             <p:inputText id="bookTitle" value="#{bookView.book.title}"/>
-        </p>
-        <p>
+            <p:message for="bookTitle" display="text"/>
+
+
             <p:outputLabel for="bookAuthor" value="Author"/>
-            <p:inputText id="bookAuthor" value="#{bookView.book.author}"/>
-        </p>
-        <p>
+            <p:selectOneMenu id="bookAuthor" value="#{bookView.book.author}" converter="#{authorConverter}">
+                <f:selectItem itemValue="#{null}" itemLabel="Select Author"/>
+                <f:selectItems value="#{searchAuthorView.authors}" var="author"
+                               itemValue="#{author}" itemLabel="#{author.name}"/>
+            </p:selectOneMenu>
+            <p:message for="bookAuthor" display="text"/>
+
             <p:outputLabel for="bookYear" value="Year"/>
             <p:inputNumber id="bookYear" value="#{bookView.book.year}"/>
-        </p>
-        <p>
+            <p:message for="bookYear" display="text"/>
+
             <p:outputLabel for="bookDescription" value="Deskription"/>
-            <p:inputTextarea id="bookDescription" value="#{bookView.book.description}"/>
-        </p>
+            <p:inputTextarea id="bookDescription" value="#{bookView.book.description}" cols="50"/>
+            <p:message for="bookDescription" display="text"/>
+
+        </h:panelGrid>
         <p>
-            <p:commandButton action="#{bookView.save}" value="Save"/>
+            <p:commandButton action="#{bookView.save}" value="Save" update="@form"/>
         </p>
     </h:form>
 </h:body>

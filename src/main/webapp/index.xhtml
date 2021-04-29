@@ -4,12 +4,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <title>Bookshelf</title>
-</h:head>
 
-<h:body>
-<!--    <h:outputLabel value="#{searchBookView.books.size()}"/>-->
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+
     <h:form>
         <div class="card">
 
@@ -29,7 +27,7 @@
                 </p:column>
 
                 <p:column headerText="Author">
-                    <h:outputText value="#{book.author}" />
+                    <h:outputText value="#{book.author.name}" />
                 </p:column>
 
                 <p:column headerText="Year">
@@ -48,16 +46,12 @@
             </p:dataTable>
         </div>
     </h:form>
-<!--    <p>-->
-<!--        <p:link outcome="/admin/book-edit" value="Add new book"/>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--    <p:link outcome="/author-list" value="Author list"/>-->
-<!--    </p>-->
 
     <div class="card" style="margin-top: .5rem">
         <p:button outcome="/admin/book-edit" value="Add new book" style="margin-right: 0.5rem"/>
         <p:button outcome="/author-list" value="Author list" />
     </div>
-</h:body>
+
+    </ui:define>
+</ui:composition>
 </html>

@@ -1,23 +1,24 @@
 package com.example.bookshelf.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.sql.Timestamp;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class AuthorEntity {
     @Id
     @GeneratedValue
     private Long id;
+
     @Column(length = 150, nullable = false)
     private String name;
+
     @Column(length = 2000)
     private String bio;
+
     @Column(nullable = false)
     private Date born;
+
     @Column(nullable = true)
     private Date died;
 
@@ -59,5 +60,18 @@ public class AuthorEntity {
 
     public void setDied(Date died) {
         this.died = died;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AuthorEntity that = (AuthorEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
