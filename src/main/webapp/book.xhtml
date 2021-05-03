@@ -4,31 +4,32 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <f:metadata>
-        <f:viewParam name="bookId" value="#{bookView.bookId}"/>
-        <f:viewAction action="#{bookView.open}"/>
-    </f:metadata>
-    <title>Book</title>
-</h:head>
 
-<h:body>
-    <h1>
-        <h:outputText value="#{bookView.book.title}"/>
-    </h1>
-    <h2>
-        <h:outputText value="#{bookView.book.author.name}"/>
-    </h2>
-    <h3>
-        <h:outputText value="#{bookView.book.year}"/>
-    </h3>
-    <p>
-        <h:outputText value="#{bookView.book.description}"/>
-    </p>
+<f:metadata>
+    <f:viewParam name="bookId" value="#{bookView.bookId}"/>
+    <f:viewAction action="#{bookView.open}"/>
+</f:metadata>
 
-    <p>
-        <p:link value="Edit" outcome="/admin/book-edit" includeViewParams="true"/>
-    </p>
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
 
-</h:body>
+        <h1>
+            <h:outputText value="#{bookView.book.title}"/>
+        </h1>
+        <h2>
+            <h:outputText value="#{bookView.book.author.name}"/>
+        </h2>
+        <h3>
+            <h:outputText value="#{bookView.book.year}"/>
+        </h3>
+        <p>
+            <h:outputText value="#{bookView.book.description}"/>
+        </p>
+
+        <p>
+            <p:link value="Edit" outcome="/admin/book-edit" includeViewParams="true"/>
+        </p>
+
+    </ui:define>
+</ui:composition>
 </html>

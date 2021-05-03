@@ -4,6 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+
 <h:head>
     <f:metadata>
         <f:viewParam name="bookId" value="#{bookView.bookId}"/>
@@ -20,7 +21,6 @@
             <p:inputText id="bookTitle" value="#{bookView.book.title}"/>
             <p:message for="bookTitle" display="text"/>
 
-
             <p:outputLabel for="bookAuthor" value="Author"/>
             <p:selectOneMenu id="bookAuthor" value="#{bookView.book.author}" converter="#{authorConverter}">
                 <f:selectItem itemValue="#{null}" itemLabel="Select Author"/>
@@ -31,9 +31,9 @@
 
             <p:outputLabel for="bookYear" value="Year"/>
             <p:inputNumber id="bookYear" value="#{bookView.book.year}"/>
-            <p:message for="bookYear" display="text"/>
+            <p:message for="bookYear" display="icon"/>
 
-            <p:outputLabel for="bookDescription" value="Deskription"/>
+            <p:outputLabel for="bookDescription" value="Description"/>
             <p:inputTextarea id="bookDescription" value="#{bookView.book.description}" cols="50"/>
             <p:message for="bookDescription" display="text"/>
 

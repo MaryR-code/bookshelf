@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "books")
 public class BookEntity {
     @Id
     @GeneratedValue
@@ -17,15 +18,13 @@ public class BookEntity {
     @Column(length = 2000)
     private String description;
 
-//    @Column(length = 200, nullable = false)
-//    private String author;
-
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false)    // обязательный параметр
     @JoinColumn(name = "author_id", nullable = false)
     @NotNull(message = "Please select author")
     private AuthorEntity author;
 
     @Column(nullable = false)
+    @NotNull
     private int year;
 
     @Column(length = 13)
@@ -54,14 +53,6 @@ public class BookEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public String getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(String author) {
-//        this.author = author;
-//    }
 
     public AuthorEntity getAuthor() {
         return author;

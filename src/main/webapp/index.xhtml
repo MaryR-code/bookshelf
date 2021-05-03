@@ -11,19 +11,21 @@
     <h:form>
         <div class="card">
 
-            <p:inputText value="#{searchBookView.term}" style="margin-bottom: .5rem">
+            <p:inputText value="#{searchBookView.term}" style="margin-bottom: .5rem; margin-right: 2rem">
                 <p:ajax update="booksTable" event="keyup" delay="500" listener="#{searchBookView.search}"/>
             </p:inputText>
+            <p:link value="Add NEW book" style="color: deeppink"
+                    outcome="/admin/book-edit" rendered="#{request.isUserInRole('admin')}" />
 
             <p:dataTable id="booksTable" var="book" value="#{searchBookView.books}">
                 <p:column headerText="ID">
-                    <p:link value="#{book.id}" outcome="/book">
-                        <f:param name="bookId" value="#{book.id}"/>
-                    </p:link>
+                    <h:outputText value="#{book.id}" />
                 </p:column>
 
                 <p:column headerText="Title">
-                    <h:outputText value="#{book.title}" />
+                    <p:link value="#{book.title}" outcome="/book">
+                        <f:param name="bookId" value="#{book.id}"/>
+                    </p:link>
                 </p:column>
 
                 <p:column headerText="Author">
@@ -34,9 +36,9 @@
                     <h:outputText value="#{book.year}" />
                 </p:column>
 
-                <p:column headerText="ISBN">
-                    <h:outputText value="#{book.isbn}"/>
-                </p:column>
+<!--                <p:column headerText="ISBN">-->
+<!--                    <h:outputText value="#{book.isbn}"/>-->
+<!--                </p:column>-->
 
                 <p:column>
                     <p:button value="View" outcome="/book">
@@ -46,11 +48,6 @@
             </p:dataTable>
         </div>
     </h:form>
-
-    <div class="card" style="margin-top: .5rem">
-        <p:button outcome="/admin/book-edit" value="Add new book" rendered="#{request.isUserInRole('admin')}" style="margin-right: 0.5rem"/>
-        <p:button outcome="/author-list" value="Author list" />
-    </div>
 
     </ui:define>
 </ui:composition>

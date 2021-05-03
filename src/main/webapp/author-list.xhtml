@@ -4,38 +4,39 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <title>Author List</title>
-</h:head>
 
-<h:body>
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+
     <h:form>
         <div class="card">
 
-            <p:inputText value="#{searchAuthorView.term}" style="margin-bottom: .5rem">
+            <p:inputText value="#{searchAuthorView.term}" style="margin-bottom: .5rem; margin-right: 2rem">
                 <p:ajax update="authorsTable" event="keyup" delay="500" listener="#{searchAuthorView.search}"/>
             </p:inputText>
+            <p:link value="Add NEW author" style="color: deeppink"
+                    outcome="/admin/author-edit" rendered="#{request.isUserInRole('admin')}" />
 
             <p:dataTable id="authorsTable" var="author" value="#{searchAuthorView.authors}">
                 <p:column headerText="ID">
-                    <p:link value="#{author.id}" outcome="/author">
+                    <h:outputText value="#{author.id}" />
+                </p:column>
+
+                <p:column headerText="Name">
+                    <p:link value="#{author.name}" outcome="/author">
                         <f:param name="authorId" value="#{author.id}"/>
                     </p:link>
                 </p:column>
 
-                <p:column headerText="Name">
-                    <h:outputText value="#{author.name}" />
-                </p:column>
-
                 <p:column headerText="Born">
                     <h:outputText value="#{author.born}">
-                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
                     </h:outputText>
                 </p:column>
 
                 <p:column headerText="Died">
                     <h:outputText value="#{author.died}">
-                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
                     </h:outputText>
                 </p:column>
 
@@ -48,8 +49,6 @@
         </div>
     </h:form>
 
-    <div class="card" style="margin-top: .5rem">
-        <p:button outcome="/admin/author-edit" value="Add new author" />
-    </div>
-</h:body>
+    </ui:define>
+</ui:composition>
 </html>

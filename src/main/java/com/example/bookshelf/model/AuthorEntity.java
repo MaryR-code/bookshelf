@@ -1,10 +1,12 @@
 package com.example.bookshelf.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "authors")
 public class AuthorEntity {
     @Id
     @GeneratedValue
@@ -19,7 +21,7 @@ public class AuthorEntity {
     @Column(nullable = false)
     private Date born;
 
-    @Column(nullable = true)
+    @Column
     private Date died;
 
     public Long getId() {
@@ -65,7 +67,7 @@ public class AuthorEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof AuthorEntity)) return false;
         AuthorEntity that = (AuthorEntity) o;
         return Objects.equals(id, that.id);
     }

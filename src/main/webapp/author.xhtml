@@ -4,34 +4,35 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <f:metadata>
-        <f:viewParam name="authorId" value="#{authorView.authorId}"/>
-        <f:viewAction action="#{authorView.open}"/>
-    </f:metadata>
-    <title>Author</title>
-</h:head>
 
-<h:body>
-    <h1>
-        <h:outputText value="#{authorView.author.name}"/>
-    </h1>
-    <h3>
-        <h:outputText value="#{authorView.author.born}">
-            <f:convertDateTime pattern="dd.MM.yyyy" />
-        </h:outputText>
-        <h:outputText value=" - "/>
-        <h:outputText value="#{authorView.author.died}">
-            <f:convertDateTime pattern="dd.MM.yyyy" />
-        </h:outputText>
-    </h3>
-    <h3>
-        <h:outputText value="#{authorView.author.bio}"/>
-    </h3>
+<f:metadata>
+    <f:viewParam name="authorId" value="#{authorView.authorId}"/>
+    <f:viewAction action="#{authorView.open}"/>
+</f:metadata>
 
-    <p>
-        <p:link value="Edit" outcome="/admin/author-edit" includeViewParams="true"/>
-    </p>
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
 
-</h:body>
+        <h1>
+            <h:outputText value="#{authorView.author.name}"/>
+        </h1>
+        <h3>
+            <h:outputText value="#{authorView.author.born}">
+                <f:convertDateTime pattern="dd.MM.yyyy"/>
+            </h:outputText>
+            <h:outputText value=" - "/>
+            <h:outputText value="#{authorView.author.died}">
+                <f:convertDateTime pattern="dd.MM.yyyy"/>
+            </h:outputText>
+        </h3>
+        <h3>
+            <h:outputText value="#{authorView.author.bio}"/>
+        </h3>
+
+        <p>
+            <p:link value="Edit" outcome="/admin/author-edit" includeViewParams="true"/>
+        </p>
+
+    </ui:define>
+</ui:composition>
 </html>

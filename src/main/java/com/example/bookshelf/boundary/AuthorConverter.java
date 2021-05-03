@@ -25,7 +25,6 @@ public class AuthorConverter implements Converter<AuthorEntity> {
         try {
             var id = Long.parseLong(value);
             return authorControl.find(id);
-
         } catch (NumberFormatException e) {
             return null;
         }

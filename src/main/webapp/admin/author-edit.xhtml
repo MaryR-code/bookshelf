@@ -4,6 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+
 <h:head>
     <f:metadata>
         <f:viewParam name="authorId" value="#{authorView.authorId}"/>
@@ -20,11 +21,11 @@
         </p>
         <p>
             <p:outputLabel for="authorBorn" value="Born"/>
-            <p:datePicker id="authorBorn" value="#{authorView.author.born}"/>
+            <p:calendar id="authorBorn" value="#{authorView.author.born}"/>
         </p>
         <p>
             <p:outputLabel for="authorDied" value="Died"/>
-            <p:datePicker id="authorDied" value="#{authorView.author.died}"/>
+            <p:calendar id="authorDied" value="#{authorView.author.died}"/>
         </p>
         <p>
             <p:outputLabel for="authorBio" value="Biography"/>

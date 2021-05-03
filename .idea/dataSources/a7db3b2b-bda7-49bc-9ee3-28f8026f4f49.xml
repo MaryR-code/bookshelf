@@ -179,11 +179,11 @@
     <sequence id="164" parent="4" name="HIBERNATE_SEQUENCE">
       <ObjectId>4</ObjectId>
     </sequence>
-    <table id="165" parent="4" name="AUTHORENTITY">
-      <ObjectId>5</ObjectId>
+    <table id="165" parent="4" name="AUTHORS">
+      <ObjectId>13</ObjectId>
     </table>
-    <table id="166" parent="4" name="BOOKENTITY">
-      <ObjectId>8</ObjectId>
+    <table id="166" parent="4" name="BOOKS">
+      <ObjectId>16</ObjectId>
     </table>
     <column id="167" parent="165" name="ID">
       <Position>1</Position>
@@ -208,10 +208,10 @@
       <DataType>VARCHAR(150)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="172" parent="165" name="PRIMARY_KEY_B">
-      <ObjectId>6</ObjectId>
+    <index id="172" parent="165" name="PRIMARY_KEY_4">
+      <ObjectId>14</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>66</SourceTextLength>
+      <SourceTextLength>61</SourceTextLength>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
@@ -244,18 +244,18 @@
       <DataType>BIGINT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="179" parent="166" name="PRIMARY_KEY_C">
-      <ObjectId>9</ObjectId>
+    <index id="179" parent="166" name="PRIMARY_KEY_3">
+      <ObjectId>17</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>64</SourceTextLength>
+      <SourceTextLength>59</SourceTextLength>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <index id="180" parent="166" name="FK23XOXGC5033EDOXTBF2U2NSTQ_INDEX_C">
-      <ObjectId>11</ObjectId>
+    <index id="180" parent="166" name="FKFJIXH2VYM2CVFJ3UFXJ91JEM7_INDEX_3">
+      <ObjectId>19</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>87</SourceTextLength>
+      <SourceTextLength>82</SourceTextLength>
       <ColNames>AUTHOR_ID</ColNames>
       <AutoCreated>1</AutoCreated>
     </index>
