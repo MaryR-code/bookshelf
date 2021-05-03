@@ -48,7 +48,7 @@
     </h:form>
 
     <div class="card" style="margin-top: .5rem">
-        <p:button outcome="/admin/book-edit" value="Add new book" style="margin-right: 0.5rem"/>
+        <p:button outcome="/admin/book-edit" value="Add new book" rendered="#{request.isUserInRole('admin')}" style="margin-right: 0.5rem"/>
         <p:button outcome="/author-list" value="Author list" />
     </div>
 
