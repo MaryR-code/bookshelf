@@ -14,7 +14,7 @@
             <p:inputText value="#{searchBookView.term}" style="margin-bottom: .5rem; margin-right: 2rem">
                 <p:ajax update="booksTable" event="keyup" delay="500" listener="#{searchBookView.search}"/>
             </p:inputText>
-            <p:link value="Add NEW book" style="color: deeppink"
+            <p:link value="Add NEW book" style="color: crimson"
                     outcome="/admin/book-edit" rendered="#{request.isUserInRole('admin')}" />
 
             <p:dataTable id="booksTable" var="book" value="#{searchBookView.books}">

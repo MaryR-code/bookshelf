@@ -30,7 +30,8 @@
         </h3>
 
         <p>
-            <p:link value="Edit" outcome="/admin/author-edit" includeViewParams="true"/>
+            <p:link value="Edit" style="color: crimson" includeViewParams="true"
+                    outcome="/admin/author-edit" rendered="#{request.isUserInRole('admin')}" />
         </p>
 
     </ui:define>

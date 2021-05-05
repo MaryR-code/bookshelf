@@ -19,10 +19,11 @@ public class LoginView {
     private HttpServletRequest request;
 
     public void login() {
-        LOG.trace("User {} is trying to log in.", username);
+        LOG.trace("User '{}' is trying to log in.", username);
         try {
             request.login(username, password);
-            LOG.trace("User {} logged in successfully", username);
+            LOG.trace("User '{}' logged in successfully", username);
+            request.setAttribute("user", username);
         } catch (ServletException e) {
             LOG.warn("Unsuccessful login. Username: " + username, e);
         }

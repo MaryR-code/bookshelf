@@ -11,13 +11,13 @@
     <ui:define name="content">
 
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" style="margin-bottom: .5rem">
 
                 <p:outputLabel for="@next" value="Username"/>
                 <p:inputText value="#{loginView.username}"/>
 
                 <p:outputLabel for="@next" value="Password"/>
-                <p:inputText value="#{loginView.password}"/>
+                <p:password value="#{loginView.password}"/>
 
             </h:panelGrid>
 

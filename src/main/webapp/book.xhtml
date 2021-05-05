@@ -27,7 +27,8 @@
         </p>
 
         <p>
-            <p:link value="Edit" outcome="/admin/book-edit" includeViewParams="true"/>
+            <p:link value="Edit" style="color: crimson" includeViewParams="true"
+                    outcome="/admin/book-edit" rendered="#{request.isUserInRole('admin')}" />
         </p>
 
     </ui:define>

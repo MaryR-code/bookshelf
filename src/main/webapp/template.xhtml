@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
@@ -14,7 +15,10 @@
 <h:body>
     <p:menubar style="margin-bottom: .5rem">
         <p:menuitem value="Search Books" outcome="/index"/>
-        <p:menuitem value="Search Authors" outcome="/author-list"/>
+        <p:menuitem value="Search Authors" outcome="/authors"/>
+        <f:facet name="options">
+            <p:button value="Login" icon="pi pi-fw pi-user" outcome="/login"/>
+        </f:facet>
     </p:menubar>
 
     <ui:insert name="content">
