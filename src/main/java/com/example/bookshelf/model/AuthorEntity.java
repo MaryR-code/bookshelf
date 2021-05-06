@@ -19,10 +19,10 @@ public class AuthorEntity {
     private String bio;
 
     @Column(nullable = false)
-    private Date born;
+    private LocalDate born;
 
     @Column
-    private Date died;
+    private LocalDate died;
 
     public Long getId() {
         return id;
@@ -48,19 +48,19 @@ public class AuthorEntity {
         this.bio = bio;
     }
 
-    public Date getBorn() {
+    public LocalDate getBorn() {
         return born;
     }
 
-    public void setBorn(Date bonn) {
-        this.born = bonn;
+    public void setBorn(LocalDate born) {
+        this.born = born;
     }
 
-    public Date getDied() {
+    public LocalDate getDied() {
         return died;
     }
 
-    public void setDied(Date died) {
+    public void setDied(LocalDate died) {
         this.died = died;
     }
 

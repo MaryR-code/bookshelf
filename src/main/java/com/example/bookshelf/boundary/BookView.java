@@ -16,6 +16,8 @@ import java.io.Serializable;
 public class BookView implements Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(BookView.class);
     @Inject
+    private HttpServletRequest request;
+    @Inject
     private BookControl control;
     private Long bookId;
     private BookEntity book;
@@ -29,14 +31,14 @@ public class BookView implements Serializable {
     }
 
     public String save() {
-        LOG.trace("Book saving...");
+        var username = request.getRemoteUser();
         if (bookId == null) {
             control.create(book);
             bookId = book.getId();
-            LOG.debug("New book ID = {} created.", bookId);
+            LOG.trace("New book ID ({}) created, user '{}'.", bookId, username);
         } else {
             control.update(book);
-            LOG.debug("Book ID = {} updated.", bookId);
+            LOG.trace("Book ID ({}) updated, user '{}'.", bookId, username);
         }
         return "/book?faces-redirect=true&includeViewParams=true";
     }

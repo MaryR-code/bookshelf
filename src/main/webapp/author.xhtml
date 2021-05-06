@@ -17,13 +17,7 @@
             <h:outputText value="#{authorView.author.name}"/>
         </h1>
         <h3>
-            <h:outputText value="#{authorView.author.born}">
-                <f:convertDateTime pattern="dd.MM.yyyy"/>
-            </h:outputText>
-            <h:outputText value=" - "/>
-            <h:outputText value="#{authorView.author.died}">
-                <f:convertDateTime pattern="dd.MM.yyyy"/>
-            </h:outputText>
+            <h:outputText value="#{authorView.author.born} / #{authorView.author.died}"/>
         </h3>
         <h3>
             <h:outputText value="#{authorView.author.bio}"/>

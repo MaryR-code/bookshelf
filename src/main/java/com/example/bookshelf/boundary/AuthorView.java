@@ -8,12 +8,15 @@ import org.slf4j.LoggerFactory;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 @Named
 @ViewScoped
 public class AuthorView implements Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(AuthorView.class);
+    @Inject
+    private HttpServletRequest request;
     @Inject
     private AuthorControl control;
     private Long authorId;
@@ -28,14 +31,14 @@ public class AuthorView implements Serializable {
     }
 
     public String save() {
-        LOG.trace("Author saving...");
+        var username = request.getRemoteUser();
         if (authorId == null) {
             control.create(author);
             authorId = author.getId();
-            LOG.debug("New author ID = {} created.", authorId);
+            LOG.trace("New author ID ({}) created, user '{}'.", authorId, username);
         } else {
             control.update(author);
-            LOG.debug("Author ID = {} updated.", authorId);
+            LOG.trace("Author ID ({}) updated, user '{}'.", authorId, username);
         }
         return "/author?faces-redirect=true&includeViewParams=true";
     }

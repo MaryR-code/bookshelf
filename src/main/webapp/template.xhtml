@@ -17,7 +17,8 @@
         <p:menuitem value="Search Books" outcome="/index"/>
         <p:menuitem value="Search Authors" outcome="/authors"/>
         <f:facet name="options">
-            <p:button value="Login" icon="pi pi-fw pi-user" outcome="/login"/>
+            <p:button value="Login" outcome="/login" icon="pi pi-fw pi-user" style="margin-right: .5rem"/>
+            <p:commandButton value="Logout" action="#{loginView.logout}" icon="pi pi-fw pi-sign-out"/>
         </f:facet>
     </p:menubar>
 
