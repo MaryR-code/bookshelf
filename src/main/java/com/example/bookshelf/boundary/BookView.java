@@ -1,6 +1,8 @@
 package com.example.bookshelf.boundary;
 
 import com.example.bookshelf.control.BookControl;
+import com.example.bookshelf.control.ReaderControl;
+import com.example.bookshelf.control.ReservationControl;
 import com.example.bookshelf.model.BookEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +20,20 @@ public class BookView implements Serializable {
     @Inject
     private HttpServletRequest request;
     @Inject
+    private ReaderControl readerControl;
+    @Inject
+    private ReservationControl reservationControl;
+    @Inject
     private BookControl control;
     private Long bookId;
     private BookEntity book;
+
+    public String reserve() {
+        var loginName = request.getRemoteUser();
+        var reader = readerControl.findOrCreateReader(loginName);
+        reservationControl.reserve(book, reader);
+        return null;
+    }
 
     public void open() {
         if (bookId == null) {

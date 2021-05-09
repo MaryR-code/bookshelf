@@ -3,10 +3,11 @@ package com.example.bookshelf.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "books")
-public class BookEntity {
+public class BookEntity implements Serializable {
     @Id
     @GeneratedValue
     private Long id;

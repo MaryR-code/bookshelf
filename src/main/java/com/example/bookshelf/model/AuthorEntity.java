@@ -1,13 +1,14 @@
 package com.example.bookshelf.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "authors")
-public class AuthorEntity {
+public class AuthorEntity implements Serializable {
     @Id
     @GeneratedValue
     private Long id;

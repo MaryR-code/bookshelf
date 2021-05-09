@@ -27,9 +27,14 @@
         </p>
 
         <p>
-            <p:link value="Edit" style="color: crimson" includeViewParams="true"
-                    outcome="/admin/book-edit" rendered="#{request.isUserInRole('admin')}" />
+            <h:form>
+                <p:link value="Edit" style="color: crimson" includeViewParams="true"
+                        outcome="/admin/book-edit" rendered="#{request.isUserInRole('admin')}" />
+                <p:commandLink value="Reserve"
+                        action="#{bookView.reserve}" rendered="#{request.isUserInRole('reader')}"/>
+            </h:form>
         </p>
+
 
     </ui:define>
 </ui:composition>

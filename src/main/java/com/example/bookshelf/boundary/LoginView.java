@@ -18,25 +18,28 @@ public class LoginView {
     @Inject
     private HttpServletRequest request;
 
-    public void login() {
+    public String login() {
         LOG.trace("User '{}' is trying to log in...", username);
         try {
             request.login(username, password);
             LOG.trace("User '{}' logged in successfully.", username);
+            return "/index?faces-redirect=true";
         } catch (ServletException e) {
             LOG.warn("Unsuccessful login. Username: " + username, e);
+            return null;
         }
     }
 
-    public void logout() {
-        username = request.getRemoteUser();
-        LOG.trace("User '{}' is trying to log out...", username);
+    public String logout() {
+        var user = request.getRemoteUser();
+        LOG.trace("User '{}' is trying to log out...", user);
         try {
             request.logout();
-            LOG.trace("User '{}' logged out successfully.", username);
+            LOG.trace("User '{}' logged out successfully.", user);
         } catch (ServletException e) {
-            LOG.warn("Unsuccessful logout. Username: " + username, e);
+            LOG.warn("Unsuccessful logout. Username: " + user, e);
         }
+        return "/index?faces-redirect=true";
     }
 
     public String getUsername() {
