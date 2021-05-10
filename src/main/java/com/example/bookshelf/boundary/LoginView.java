@@ -23,7 +23,11 @@ public class LoginView {
         try {
             request.login(username, password);
             LOG.trace("User '{}' logged in successfully.", username);
-            return "/index?faces-redirect=true";
+            if (username.equals("admin")) {
+                return "/admin/readers?faces-redirect=true";
+            } else {
+                return "/index?faces-redirect=true";
+            }
         } catch (ServletException e) {
             LOG.warn("Unsuccessful login. Username: " + username, e);
             return null;

@@ -13,6 +13,12 @@ public class ReaderEntity implements Serializable {
     @Column(name = "login_name", nullable = false, unique = true)
     private String loginName;
 
+    @Column
+    private String fullName;
+
+    @Column
+    private String email;
+
     public Long getId() {
         return id;
     }
@@ -27,6 +33,22 @@ public class ReaderEntity implements Serializable {
 
     public void setLoginName(String loginName) {
         this.loginName = loginName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

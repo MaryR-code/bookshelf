@@ -1,7 +1,6 @@
 package com.example.bookshelf.control;
 
 import com.example.bookshelf.model.AuthorEntity;
-import com.example.bookshelf.model.BookEntity;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,7 +9,6 @@ import java.util.List;
 
 @Stateless
 public class AuthorControl {
-
     @PersistenceContext
     private EntityManager em;
 

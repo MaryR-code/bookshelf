@@ -1,11 +1,13 @@
 package com.example.bookshelf.control;
 
+import com.example.bookshelf.model.AuthorEntity;
 import com.example.bookshelf.model.ReaderEntity;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class ReaderControl {
@@ -25,5 +27,23 @@ public class ReaderControl {
         } else {
             return reader.get();
         }
+    }
+
+    public List<ReaderEntity> search(String term) {
+        if (term == null || term.isBlank()) {
+            return em.createQuery("select r from ReaderEntity r", ReaderEntity.class)
+                    .setMaxResults(20)
+                    .getResultList();
+        } else {
+            return em.createQuery("select r from ReaderEntity r " +
+                    "where upper(r.loginName) like :term", ReaderEntity.class)
+                    .setMaxResults(20)
+                    .setParameter("term", "%" + term.toUpperCase() + "%")
+                    .getResultList();
+        }
+    }
+
+    public void update(ReaderEntity reader) {
+        em.merge(reader);
     }
 }

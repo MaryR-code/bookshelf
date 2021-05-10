@@ -78,4 +78,11 @@ public class BookEntity implements Serializable {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    @Override
+    public String toString() {
+        return "BookEntity{" +
+                "id=" + id +
+                '}';
+    }
 }

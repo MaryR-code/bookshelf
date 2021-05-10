@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <f:metadata>
+        <f:viewParam name="loginName" value="#{readerView.loginName}"/>
+        <f:viewAction action="#{readerView.open}"/>
+    </f:metadata>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p style="font-family: Arial">
+            <h:outputText value="Hello, #{readerView.loginName}, please update your profile:"/>
+        </p>
+        <p>
+            <p:outputLabel for="readerName" value="Name"/>
+            <p:inputText id="readerName" value="#{readerView.reader.fullName}"/>
+        </p>
+        <p>
+            <p:outputLabel for="readerEmail" value="E-mail"/>
+            <p:inputText id="readerEmail" value="#{readerView.reader.email}"/>
+        </p>
+        <p>
+            <p:commandButton action="#{readerView.save}" value="Update"/>
+        </p>
+    </h:form>
+</h:body>
+</html>
